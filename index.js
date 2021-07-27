@@ -14,10 +14,10 @@ app.use(express.json());
 app.listen(PORT,console.log("server started"));
 
 app.get("/",(req,res)=>{
-  res.send("welcome to password reset flow (task - 3 of backend)  !!!!")
+  res.send("welcome to password reset flow (task - 3 of backend)  !!!")
 })
 
-console.log("welcome to password reset flow (task - 3 of backend) !!!!");
+console.log("welcome to password reset flow (task - 3 of backend) !!!");
 
 const url="mongodb+srv://SabarishE:sabarishe@cluster0.eeimf.mongodb.net/userlist" ;
 // const url= process.env.MONGODB_URI || "mongodb://localhost/userlist";
