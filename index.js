@@ -17,7 +17,7 @@ app.use(cors());
 app.listen(PORT,console.log("server started"));
 
 app.get("/",(req,res)=>{
-  res.send("welcome to password reset flow (task - 3 of backend)  !!!")
+  res.send({reponse:"welcome to password reset flow (task - 3 of backend)  !!!"})
 })
 
 console.log("welcome to password reset flow (task - 3 of backend) !!!");
