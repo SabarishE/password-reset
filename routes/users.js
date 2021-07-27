@@ -129,10 +129,12 @@ router.post("/forgotpwd",async(req,res)=>{
     
     
 
+      const base =req.body.link
 
-   
 
-    const link=`http://localhost:5000/users/resetpwd/${pwdrequester[0].name}/${token}`;
+   const link= base+"/"+pwdrequester[0].name+"/"+token;
+
+    // const link=`http://localhost:5000/users/resetpwd/${pwdrequester[0].name}/${token}`;
 
     console.log("one time link >>>>",link);
 
@@ -155,7 +157,7 @@ router.post("/forgotpwd",async(req,res)=>{
 // });
 
 
-    res.send(["one time link >>>>",link]);
+    res.send({onetimelink:link});
   }
 catch(err) {
     res.status(500);
