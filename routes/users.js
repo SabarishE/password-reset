@@ -80,7 +80,7 @@ router.post("/login",async(req,res)=>{
    }
    else
    {
-     res.send({message:"---- successful login in POST (Authentication success)----"});
+     res.send({loggeduser:userLoggingIn[0],message:"---- successful login ----"});
      console.log("---- successful login in POST ----");
    }
  
