@@ -141,20 +141,20 @@ router.post("/forgotpwd",async(req,res)=>{
 //-----sending one time link through mail usig "nodemailer"
 
 
-//     var mailOptions = {
-//       from: 'lykanh007@gmail.com',
-//       to: 'lykanh007@gmail.com',
-//       subject: 'reset password mail',
-//       text: link
-//     };
+    var mailOptions = {
+      from: 'lykanh007@gmail.com',
+      to:pwdrequester[0].email ,
+      subject: 'reset password mail',
+      text: link
+    };
 
-//     transporter.sendMail(mailOptions, function(error, info){
-// if (error) {
-//   console.log(error);
-// } else {
-//   console.log('Email sent: ' + info.response);
-// }
-// });
+    transporter.sendMail(mailOptions, function(error, info){
+if (error) {
+  console.log(error);
+} else {
+  console.log('Email sent: ' + info.response);
+}
+});
 
 
     res.send({onetimelink:link});
