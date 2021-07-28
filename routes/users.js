@@ -190,7 +190,9 @@ const {name,token}=req.params;
   {
     console.log("---token matched in reset request------")
     res.send({email:pwdrequester[0].email});
+
   }
+  
 
  }
  catch(err){
