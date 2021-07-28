@@ -157,7 +157,7 @@ if (error) {
 });
 
 
-    res.send({onetimelink:link});
+    res.send({onetimelink:link,email:pwdrequester[0].email});
   }
 catch(err) {
     res.status(500);
