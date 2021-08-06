@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken";
 
 import { transporter } from "./authModel.js";
 
-const secretKey="mysecretkey";
 
 import bcrypt from "bcryptjs"
 // import bcrypt from "bcrypt";
@@ -24,8 +23,33 @@ router.get("/",async(req,res)=>{
     
 })
 
-// ------------ sign up--------------
 
+
+// ------------ Sign up--------------
+
+
+//------------checking existing email id---------
+
+router.get("/emailcheck/:email",async(req,res)=>{
+
+  try{
+    const userSigningUp= await User.findOne({email:req.params.email});
+    if(userSigningUp)
+    {
+      res.send({check:true})
+    }
+    else{
+      res.send({check:false})
+    }
+   
+  }
+catch(err){
+  res.send(err)
+} 
+  
+})
+
+//-------sign up with unique email
 router.post("/signup",(async(req,res)=>{
 
   const adduser=req.body ;
@@ -47,18 +71,18 @@ router.post("/signup",(async(req,res)=>{
 
   try{
     const newuser =await user.save();
-    res.send({newuser:newuser,message:"---------registration success !!!---------"});
+    res.send({newuser:newuser,message:"registration success !!!"});
     console.log("registration success !!!",newuser);
   }
   catch(err){
      res.status(500);
      res.send(err);
-     res.send({message:"input -- error"});
+     res.send({message:"invalid credentials"});
   }
 
 }));
 
-
+//  --------- Log in ----------
 
 router.post("/login",async(req,res)=>{
 
@@ -80,7 +104,7 @@ router.post("/login",async(req,res)=>{
    }
    else
    {
-     res.send({loggeduser:userLoggingIn[0],message:"---- successful login ----"});
+     res.send({loggeduser:userLoggingIn[0],message:"login success !!!"});
      console.log("---- successful login in POST ----");
    }
  
@@ -96,16 +120,10 @@ router.post("/login",async(req,res)=>{
  })
 
 
-//-----forgot password form------
 
-router.get("/forgotpwd",async(req,res)=>{
 
-  // onclick of forgot password button url is redirected to forgot password form
-  res.send("forgot password ????");
 
-});
-
-// ------sending one time link to user's mail to change password
+// ------sending one time link to user's mail to change password -----
 
 router.post("/forgotpwd",async(req,res)=>{
 
@@ -116,7 +134,7 @@ router.post("/forgotpwd",async(req,res)=>{
 
 
        // JWT secret key in combined with unique old password of user.
-    const supersecretKey=secretKey + pwdrequester[0].passwordHash;
+    const supersecretKey= pwdrequester[0].passwordHash;
 
     const payload={name:pwdrequester[0].name}
     //signing JWT token
@@ -125,7 +143,6 @@ router.post("/forgotpwd",async(req,res)=>{
 
       User.findOneAndUpdate({name:pwdrequester[0].name},{randomString:supersecretKey},{new: true,useFindAndModify: false})
       .then((x)=>console.log("user details with string update>>>>>",x))
-      .catch((err)=>console.log(err.message))
     
     
 
@@ -134,7 +151,6 @@ router.post("/forgotpwd",async(req,res)=>{
 
    const link= base+"/"+pwdrequester[0].name+"/"+token;
 
-    // const link=`http://localhost:5000/users/resetpwd/${pwdrequester[0].name}/${token}`;
 
     console.log("one time link >>>>",link);
 
@@ -142,7 +158,7 @@ router.post("/forgotpwd",async(req,res)=>{
 
 
     var mailOptions = {
-      from: 'lykanh007@gmail.com',
+      from: 'one.trial.one.trial@gmail.com',
       to:pwdrequester[0].email ,
       subject: 'reset password mail',
       text: link
@@ -241,9 +257,6 @@ const {name,token}=req.params;
             console.log("password changed",m)
         }
         
-    }).catch((error) => {
-        res.status(500).send(error);
-        console.log("error in pwd change",error)
     })
     }
   
