@@ -1,0 +1,220 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.App {
+  font-family: sans-serif;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+#header {
+  background-color: rgb(15, 2, 2);
+  font-size: 2rem;
+  color: white;
+  padding: 1rem;
+  font-family: "Franklin Gothic Medium", Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 3.5rem;
+  box-shadow: 0 0 10px 1px rgb(121, 121, 121);
+}
+#header span {
+  margin: 0rem 1rem;
+}
+
+#loginDiv,
+#registerDiv,
+#forgotDiv,
+#resetDiv {
+  max-width: 300px;
+  background-color: rgb(124, 228, 124);
+  padding-bottom: 0.5rem;
+  margin: auto;
+  margin-top: 4rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 5px rgb(36, 25, 25);
+  background-color: transparent;
+}
+
+#loginDiv input,
+label,
+#registerDiv input,
+label,
+#forgotDiv input,
+label,
+#resetDiv input,
+label {
+  font-size: 1.5rem;
+  display: block;
+  margin: auto;
+  width: 90%;
+}
+
+#loginDiv input,
+#registerDiv input,
+#forgotDiv input,
+#resetDiv input {
+  margin-bottom: 1rem;
+
+  border-radius: 4px;
+  border: 2px solid rgb(146, 146, 146);
+}
+
+label span {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+#loginDiv input[type="submit"],
+#registerDiv input[type="submit"],
+#forgotDiv input[type="submit"],
+#resetDiv input[type="submit"] {
+  margin: auto;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  max-width: 50%;
+}
+
+.formDiv {
+  height: 3.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  background: black;
+  width: 100%;
+  border-radius: 1rem 1rem 0 0;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  line-height: 1.2rem;
+}
+
+.formDiv span {
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 0.2rem;
+  color: grey;
+}
+
+#loginFooter {
+  display: flex;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  padding: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+#verifyToken {
+  max-width: 300px;
+
+  margin: auto;
+  margin-top: 4rem;
+  background-color: rgb(248, 146, 87);
+  margin-top: 3rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+#verifyToken button {
+  display: block;
+  margin: 1rem auto;
+  width: 75%;
+  font-size: 1.5rem;
+  background-color: black;
+  color: rgb(255, 136, 67);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.9sec;
+}
+
+#verifyToken button:hover {
+  box-shadow: 0 0 1px 3px rgb(0, 0, 0);
+}
+#popup {
+  width: 270px;
+  height: 200px;
+  box-sizing: border-box;
+  padding: 1rem;
+  background-color: rgb(255, 0, 0);
+  border-radius: 2rem 0rem;
+  z-index: 10;
+  position: absolute;
+  border: 1rem solid white;
+  left: 50%;
+  top: 50%;
+  margin-top: -100px;
+  margin-left: -135px;
+}
+#popup button {
+  display: block;
+  position: relative;
+  left: 190px;
+
+  background-color: black;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  z-index: 15;
+  cursor: pointer;
+}
+
+#popup button:hover {
+  box-shadow: 0 0 2px 2px white;
+}
+#popup span {
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: block;
+  margin: auto;
+  padding: 0.3rem;
+  color: white;
+}
+
+#homepage {
+  width: 300px;
+
+  background-color: rgb(61, 19, 9);
+  color: white;
+  margin: auto;
+  padding: 0.5rem;
+  margin-top: 4rem;
+  border-radius: 3px;
+}
+
+#homepage #logout {
+  text-decoration: none;
+  color: black;
+  background-color: rgb(245, 87, 87);
+  width: 100px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  display: block;
+  margin: auto;
+  padding: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+#homepage h3 span {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+@media screen and (max-width: 425px) {
+  #header {
+    height: 100%;
+  }
+  #header div {
+    text-align: center;
+  }
+  #header #loadingDiv {
+    width: 25%;
+    display: block;
+    margin: auto;
+  }
+}
